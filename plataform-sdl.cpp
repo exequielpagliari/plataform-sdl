@@ -24,7 +24,7 @@ auto main(int argc, char* argv[]) -> int {
     }
 
     auto window = SDL_CreateWindow(
-        "Example", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, 0
+        "plataformSDL", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, 0
     );
 
     while (!shouldQuit) {
