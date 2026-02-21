@@ -26,4 +26,12 @@ endif()
 target_compile_features(plataform-sdl PRIVATE cxx_std_20)
 target_link_libraries(plataform-sdl PRIVATE SDL2::SDL2)
 target_link_libraries(plataform-sdl PRIVATE SDL2::SDL2main)
+
+if (WIN32)
+    add_custom_command(
+        TARGET plataform-sdl POST_BUILD
+        COMMAND "${CMAKE_COMMAND}" -E copy_if_different "$<TARGET_FILE:SDL2::SDL2>" "$<TARGET_FILE_DIR:plataform-sdl>"
+        VERBATIM
+    )
+endif()
 # TODO: Agregue pruebas y destinos de instalación si es necesario.
