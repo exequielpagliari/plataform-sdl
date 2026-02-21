@@ -11,12 +11,16 @@ endif()
 
 project ("plataform-sdl")
 
-set(SDL2_DIR "vcpkg_installed/x64-windows/share/sdl2" CACHE PATH "Ruta a SDL2" FORCE)
+
+if (WIN32)
+    set(SDL2_DIR "vcpkg_installed/x64-windows/share/sdl2" CACHE PATH "Rute to SDL2" FORCE)
+endif()
+
 find_package(SDL2 CONFIG REQUIRED)
 
 
 # Agregue un origen al ejecutable de este proyecto.
-add_executable (plataform-sdl "plataform-sdl.cpp" "plataform-sdl.h")
+add_executable (plataform-sdl  "tools/Logger.cpp" "window/Window.cpp" "main.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET plataform-sdl PROPERTY CXX_STANDARD 20)
