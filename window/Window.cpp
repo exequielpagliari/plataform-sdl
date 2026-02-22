@@ -17,13 +17,9 @@ bool Window::init(unsigned int width, unsigned int height, std::string title) {
         return EXIT_FAILURE;
     }
 
-    if (SDL_Init(SDL_INIT_AUDIO) != 0) {
-        Logger::log(1, "%s: Unable to initialize SDL: %s\n", __FUNCTION__, SDL_GetError());
-        return EXIT_FAILURE;
-    }
 
     mWindow = SDL_CreateWindow(
-        "plataformSDL", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, 0
+        title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, 0
     );
 
     if (!mWindow) {
