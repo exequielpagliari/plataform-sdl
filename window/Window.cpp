@@ -3,12 +3,22 @@
 
 bool Window::init(unsigned int width, unsigned int height, std::string title) {
     if (SDL_Init(SDL_INIT_EVENTS) != 0) {
-        std::cout << "Unable to initialize SDL: " << SDL_GetError() << std::endl;
+        Logger::log(1, "%s: Unable to initialize SDL: %s\n", __FUNCTION__, SDL_GetError());
         return EXIT_FAILURE;
     }
 
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
-        std::cout << "Unable to initialize SDL: " << SDL_GetError() << std::endl;
+        Logger::log(1, "%s: Unable to initialize SDL: %s\n", __FUNCTION__, SDL_GetError());
+        return EXIT_FAILURE;
+    }
+
+    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
+        Logger::log(1, "%s: Unable to initialize SDL: %s\n", __FUNCTION__, SDL_GetError());
+        return EXIT_FAILURE;
+    }
+
+    if (SDL_Init(SDL_INIT_AUDIO) != 0) {
+        Logger::log(1, "%s: Unable to initialize SDL: %s\n", __FUNCTION__, SDL_GetError());
         return EXIT_FAILURE;
     }
 
