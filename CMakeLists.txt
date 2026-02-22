@@ -16,6 +16,10 @@ if (WIN32)
     set(SDL2_DIR "vcpkg_installed/x64-windows/share/sdl2" CACHE PATH "Rute to SDL2" FORCE)
 endif()
 
+if (UNIX)
+         set(SDL2_DIR "vcpkg_installed/x64-linux/share/sdl2" CACHE PATH "Rute to SDL2" FORCE)
+endif()
+
 find_package(SDL2 CONFIG REQUIRED)
 
 

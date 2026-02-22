@@ -2,12 +2,15 @@
 #include "../tools/Logger.h"
 
 bool Window::init(unsigned int width, unsigned int height, std::string title) {
-    if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
+    if (SDL_Init(SDL_INIT_EVENTS) != 0) {
         std::cout << "Unable to initialize SDL: " << SDL_GetError() << std::endl;
         return EXIT_FAILURE;
     }
 
-
+    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
+        std::cout << "Unable to initialize SDL: " << SDL_GetError() << std::endl;
+        return EXIT_FAILURE;
+    }
 
     mWindow = SDL_CreateWindow(
         "plataformSDL", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, 0
